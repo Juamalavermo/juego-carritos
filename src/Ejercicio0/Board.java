@@ -11,6 +11,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -40,9 +42,11 @@ public class Board extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        Image fondo =loadImage("fondo.png");
-        g.drawImage(fondo, 0, 0, null);
-      
+        Image fondo =loadImage("blue_background.png");
+        //g.drawImage(fondo, 0, 0, null);
+      for (int i = 0; i<(22*32); i+=22) {
+            g.drawImage(fondo, i, 0, this);
+          }
         
         g.fillOval(xref+10, 440, 10, 10);
         g.fillOval(xref+30, 440, 10, 10);
@@ -69,7 +73,7 @@ public class Board extends JPanel implements ActionListener {
         
           Image gato = loadImage("cats.gif");
         g.drawImage(gato, (this.xGato), (360), (this.xGato+132), (360+80), (this.numImage*132), 0, (this.numImage*132+132), 80, this);
-       
+        
         
         if (carro1.intersects(carro2)) {
             //this.timer.stop();
@@ -77,6 +81,22 @@ public class Board extends JPanel implements ActionListener {
         }
         
  }
+    
+    private class TAdapter extends KeyAdapter {
+        
+        public void KeyReleased(KeyEvent e){
+            int key = e.getKeyCode();
+            if (key == KeyEvent.VK_SPACE) {
+                System.out.println("VK_SPACE");
+            }
+        }
+        
+        @Override
+        public void keyPressed(KeyEvent e) {
+            
+            
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

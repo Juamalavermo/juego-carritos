@@ -18,7 +18,7 @@ public class Application extends JFrame {
         setSize(1024, 540);
         setTitle("Ejercicio 0");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+       // setResizable(false);
         setLocationRelativeTo(null);
     }    
     
