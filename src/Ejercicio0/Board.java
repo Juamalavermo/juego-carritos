@@ -27,10 +27,13 @@ public class Board extends JPanel implements ActionListener {
     private Timer timer;
     
   public Board() {
+      addKeyListener (new TAdapter ());
+      setFocusable(true);
       timer = new Timer(this.delay, this);
       timer.start();
       this.xGato = 0;
       this.numImage = 0;
+      
   }
   
   public Image loadImage(String imageName){
@@ -84,7 +87,7 @@ public class Board extends JPanel implements ActionListener {
     
     private class TAdapter extends KeyAdapter {
         
-        public void KeyReleased(KeyEvent e){
+        public void KeyReleased(KeyEvent e) {
             int key = e.getKeyCode();
             if (key == KeyEvent.VK_SPACE) {
                 System.out.println("VK_SPACE");
